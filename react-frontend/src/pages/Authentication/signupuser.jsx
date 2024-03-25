@@ -1,7 +1,7 @@
 import React from "react";
 
 const SignupUser= () =>{
-    return <div>SignupUser</div>;
+    return <header></header>;
 };
 
 
