@@ -1,11 +1,14 @@
 .posts{
-    gap: 10px;
+    gap: 30px;
 }
 
 
 .post{
-height: 400px;
+justify-content: space-between;
+gap:40px;
 width: 600px;
-background-color: grey;
+background-color: rgb(223, 218, 218);
+border-radius: 7px;
+padding:10px
 
 }
