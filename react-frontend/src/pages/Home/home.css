@@ -1,0 +1,11 @@
+.posts{
+    gap: 10px;
+}
+
+
+.post{
+height: 400px;
+width: 600px;
+background-color: grey;
+
+}
