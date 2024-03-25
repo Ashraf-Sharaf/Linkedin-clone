@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../header";
+import axios from "axios";
 
 import "./home.css";
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+
+  const loadPosts = async () => {
+    const response = await axios.get(
+      "http://localhost/linkedin/back-end/getPosts.php"
+    );
+
+
+    setPosts(response.data['posts']);
+  };
+
+  useEffect(() => {
+    loadPosts();
+  }, []);
+
   return (
     <div>
       <Header />

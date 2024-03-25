@@ -4,7 +4,7 @@ include('connection.php');
 
 
 $query = $mysqli->prepare(
-    'SELECT p.description ,u.name,u.bio 
+    'SELECT p.id,p.description ,u.name,u.bio 
     FROM usersposts as p
     INNER JOIN users as u ON p.user_id = u.id
 ');
@@ -17,9 +17,10 @@ if($num_rows == 0) {
     $response["status"] = "No Posts";
 }else{
     $posts = [];
-    $query->bind_result($description, $name, $bio);
+    $query->bind_result($id,$description, $name, $bio);
     while($query->fetch()){
         $post = [
+            'id' => $id,
             'description' => $description,
             'name' => $name,
             'bio' => $bio,
