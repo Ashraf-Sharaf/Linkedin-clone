@@ -29,10 +29,10 @@ const Home = () => {
       <Header />
 
       <div className="flex column center posts">
-        <div>
+        <div className="addpost flex column">
           <input
             type="text"
-            placeholder="description"
+            placeholder="Whats on your mind"
             onChange={(e) => {
               setDescription(e.target.value);
             }}
