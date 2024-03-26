@@ -19,7 +19,9 @@ const SignupUser = () => {
       <div className="flex center">
         <div className="flex column center form">
           <h3>Sign-up</h3>
-          <input
+
+          <label>Name</label>
+          <input className="inputs"
             type="text"
             placeholder="Name"
             onChange={(e) => {
@@ -29,8 +31,8 @@ const SignupUser = () => {
               });
             }}
           />
-
-          <input
+          <label>Email</label>
+          <input className="inputs"
             type="text"
             placeholder="Email"
             onChange={(e) => {
@@ -40,9 +42,8 @@ const SignupUser = () => {
               });
             }}
           />
-
-          <input
-            className=""
+          <label>Password</label>
+          <input className="inputs"
             type="password"
             placeholder="Password"
             onChange={(e) => {
@@ -52,9 +53,8 @@ const SignupUser = () => {
               });
             }}
           />
-
-          <input
-            className=""
+          <label>Bio</label>
+          <input className="inputs"
             type="text"
             placeholder="Bio"
             onChange={(e) => {
@@ -65,7 +65,7 @@ const SignupUser = () => {
             }}
           />
 
-          <button
+          <button className="loginBtn"
             onClick={async () => {
               try {
                 const { name, email, password, bio } = credentials;

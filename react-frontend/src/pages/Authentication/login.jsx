@@ -18,8 +18,8 @@ const Login = () => {
       <div className="flex center">
         <div className="flex column center form">
           <h3>Login</h3>
-
-          <input className="" type="text" placeholder="Email" 
+          <label>Email</label>
+          <input className="inputs" type="text" placeholder="Email" 
           onChange={(e) => {
                 setCredentials({
                   ...credentials,
@@ -27,8 +27,8 @@ const Login = () => {
                 });
               }}/>
 
-
-          <input className="" type="password" placeholder="Password" 
+            <label>Password</label>
+          <input className="inputs" type="password" placeholder="Password" 
           onChange={(e) => {
                 setCredentials({
                   ...credentials,
@@ -36,7 +36,7 @@ const Login = () => {
                 });
               }}/>
 
-<button
+<button className="loginBtn"
   onClick={async () => {
     try {
       const { email, password } = credentials;
@@ -61,6 +61,11 @@ const Login = () => {
 >
   Login
 </button>
+
+<a href="./signup">
+
+  Signup here
+</a>
         </div>
       </div>
     </div>
