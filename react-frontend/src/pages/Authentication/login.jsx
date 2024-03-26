@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../../header";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 
 const Login = () => {
 
@@ -18,7 +18,7 @@ const Login = () => {
         <div className="flex column center form">
           <h3>Login</h3>
 
-          <input className="" type="text" placeholder="Email"
+          <input className="" type="text" placeholder="Email" 
           onChange={(e) => {
                 setCredentials({
                   ...credentials,
@@ -27,7 +27,7 @@ const Login = () => {
               }}/>
 
 
-          <input className="" type="text" placeholder="Password"
+          <input className="" type="text" placeholder="Password" 
           onChange={(e) => {
                 setCredentials({
                   ...credentials,
@@ -36,28 +36,29 @@ const Login = () => {
               }}/>
 
           <button
-             onClick={console.log(credentials)}
-              // onClick={async () => {
-              //   try {
-              //     const { email, password } = credentials;
+             
+              onClick={async () => {
+                try {
+                  const { email, password } = credentials;
 
-              //     const response = await axios.post(
-              //       "http://127.0.0.1:8000/login",
-              //       {
-              //         email,
-              //         password,
-              //       }
-              //     );
+                  const response = await axios.post(
+                    "http://localhost/linkedin/back-end/login.php",
+                    {
+                      email,
+                      password,
+                    }
+                  );
 
-              //     console.log(response.data);
+                  console.log(response.data);
 
-              //     if (response.data.status === "success") {
-              //       // navigate("/");
-              //     }
-              //   } catch (error) {
-              //     console.error(error);
-              //   }
-              // }}
+                  if (response.data.status === "success") {
+                    // navigate("/");
+                    
+                  }
+                } catch (error) {
+                  console.error(error);
+                }
+              }}
             >
               Login
             </button>
