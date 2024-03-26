@@ -9,18 +9,20 @@ if (isset($_POST['email'], $_POST['password'])) {
     $password = $_POST['password'];
 
     $query = $mysqli->prepare(
-        'SELECT password 
+        'SELECT id,password 
         FROM users 
         WHERE email=?');
     $query->bind_param('s', $email);
     $query->execute();
     $query->store_result();
-    $query->bind_result($pass);
+    $query->bind_result($id,$pass);
     $query->fetch();
 
     if ($query->num_rows() == 1) {
         if (password_verify($password, $pass)) {
             $response['status'] = "success";
+            $response['id'] = $id;
+
         } else {
             $response['status'] = "failed"; 
         }

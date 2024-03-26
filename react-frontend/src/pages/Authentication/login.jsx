@@ -52,6 +52,7 @@ const Login = () => {
 
       if (response.data['status'] === "success") {
         navigate("/home");
+        localStorage.setItem("UserId", response.data['id']);
       }
     } catch (error) {
       console.error(error);
