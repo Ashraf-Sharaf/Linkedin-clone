@@ -4,13 +4,13 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignupUser = () => {
+const SignupCompany = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
-    bio: "",
+    description: "",
   });
 
   return (
@@ -53,14 +53,14 @@ const SignupUser = () => {
               });
             }}
           />
-          <label>Bio</label>
+          <label>Description</label>
           <input className="inputs"
             type="text"
-            placeholder="Bio"
+            placeholder="Description"
             onChange={(e) => {
               setCredentials({
                 ...credentials,
-                bio: e.target.value,
+                description: e.target.value,
               });
             }}
           />
@@ -68,16 +68,16 @@ const SignupUser = () => {
           <button className="loginBtn"
             onClick={async () => {
               try {
-                const { name, email, password, bio } = credentials;
+                const { name, email, password, description } = credentials;
 
                 const formData = new FormData();
                 formData.append("name", name);
                 formData.append("email", email);
                 formData.append("password", password);
-                formData.append("bio", bio);
+                formData.append("description", description);
 
                 const response = await axios.post(
-                  "http://localhost/linkedin/back-end/signupUser.php",
+                  "http://localhost/linkedin/back-end/signupCompany.php",
                   formData
                 );
 
@@ -91,14 +91,11 @@ const SignupUser = () => {
           >
             Signup
           </button>
-          <a href="./signupcompany">
 
-  Signup as company here
-</a>
         </div>
       </div>
     </div>
   );
 };
 
-export default SignupUser;
+export default SignupCompany;
