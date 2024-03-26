@@ -2,10 +2,11 @@ import React from "react";
 import Header from "../../header";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
-
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
 
@@ -35,33 +36,30 @@ const Login = () => {
                 });
               }}/>
 
-          <button
-             
-              onClick={async () => {
-                try {
-                  const { email, password } = credentials;
+<button
+  onClick={async () => {
+    try {
+      const { email, password } = credentials;
 
-                  const response = await axios.post(
-                    "http://localhost/linkedin/back-end/login.php",
-                    {
-                      email,
-                      password,
-                    }
-                  );
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('password', password);
 
-                  console.log(response.data);
+      const response = await axios.post(
+        "http://localhost/linkedin/back-end/login.php",
+        formData
+      );
 
-                  if (response.data.status === "success") {
-                    // navigate("/");
-                    
-                  }
-                } catch (error) {
-                  console.error(error);
-                }
-              }}
-            >
-              Login
-            </button>
+      if (response.data['status'] === "success") {
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }}
+>
+  Login
+</button>
         </div>
       </div>
     </div>
