@@ -28,7 +28,7 @@ const Login = () => {
               }}/>
 
 
-          <input className="" type="text" placeholder="Password" 
+          <input className="" type="password" placeholder="Password" 
           onChange={(e) => {
                 setCredentials({
                   ...credentials,

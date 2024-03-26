@@ -19,7 +19,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     $query->fetch();
 
     if ($query->num_rows() == 1) {
-        if ($password == $pass) {
+        if (password_verify($password, $pass)) {
             $response['status'] = "success";
         } else {
             $response['status'] = "failed"; 
