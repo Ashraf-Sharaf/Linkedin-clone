@@ -82,7 +82,7 @@ const SignupUser = () => {
                 );
 
                 if (response.data["status"] === "success") {
-                  navigate("/home");
+                  navigate("/");
                 }
               } catch (error) {
                 console.error(error);

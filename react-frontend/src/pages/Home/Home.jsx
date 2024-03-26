@@ -4,8 +4,10 @@ import axios from "axios";
 
 import "./home.css";
 import PostCard from "./PostCard.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const userID=localStorage.getItem("UserId");
 
 
@@ -27,6 +29,16 @@ const Home = () => {
   return (
     <div>
       <Header />
+      <button className="logoutBtn"
+      onClick={()=>{
+
+        localStorage.clear();
+        navigate("/");
+
+      }}
+      
+      
+      >logout</button>
 
       <div className="flex column center posts">
         <div className="addpost flex column">
@@ -51,7 +63,8 @@ const Home = () => {
                 );
 
                 if (response.data["status"] === "success") {
-                  alert("Post added");
+                  window.location.href = window.location.href;
+
                 }
               } catch (error) {
                 console.error(error);
