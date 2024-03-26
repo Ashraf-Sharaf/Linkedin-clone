@@ -10,6 +10,7 @@ const SignupUser = () => {
     name: "",
     email: "",
     password: "",
+    bio: "",
   });
 
   return (
@@ -52,19 +53,31 @@ const SignupUser = () => {
             }}
           />
 
+          <input
+            className=""
+            type="text"
+            placeholder="Bio"
+            onChange={(e) => {
+              setCredentials({
+                ...credentials,
+                bio: e.target.value,
+              });
+            }}
+          />
+
           <button
             onClick={async () => {
               try {
-                const { name , email, password } = credentials;
+                const { name, email, password, bio } = credentials;
 
                 const formData = new FormData();
                 formData.append("name", name);
                 formData.append("email", email);
                 formData.append("password", password);
-
+                formData.append("bio", bio);
 
                 const response = await axios.post(
-                  "http://localhost/linkedin/back-end/signup.php",
+                  "http://localhost/linkedin/back-end/signupUser.php",
                   formData
                 );
 
